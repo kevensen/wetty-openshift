@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: wetty-openssh
+metadata:
+  annotations:
+    description: OpenSSH for Web Based Terminal Interface
+    iconClass: icon-shadowman
+    tags: tty,http
+  name: wetty-openssh
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      description: Keeps track of changes in the application image
+    name: openssh
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      description: Defines how to build the application
+    name: openssh
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: openssh:latest
+    source:
+      contextDir: ${CONTEXT_DIR}
+      git:
+        ref: ${REPOSITORY_REF}
+        uri: ${GITHUB_REPOSITORY_URL}
+      type: Git
+    strategy:
+      dockerStrategy: null
+      type: Docker
+      env:
+      - name: "WETTY_PASSWORD"
+        value: ${WETTY_PASSWORD}
+    triggers:
+    - github:
+        secret: ${GITHUB_WEBHOOK_SECRET}
+      type: GitHub
+    - type: ConfigChange
+
+
+parameters:
+- description: The password to be assigned to the default user
+  required: false
+  value: wetty
+  name: WETTY_PASSWORD
+- description: The URL of the repository containing the Wetty OpenSSH Dockerfiles
+  displayName: Wetty OpenSSH git Repo
+  name: GITHUB_REPOSITORY_URL
+  required: true
+  value: https://github.com/kevensen/wetty-openshift.git
+- description: The repository reference for the Wetty OpenSSH Dockerfile
+  displayName: Wetty OpenSSH Dockerfile Repoistory Branch
+  name: REPOSITORY_REF
+  required: true
+  value: master
+- description: Set this to the subdirectory containing the wetty Dockerfile
+  displayName: Wetty Dockerfile Context Directory
+  name: CONTEXT_DIR
+  required: false
+- description: Github trigger secret.  A difficult to guess string encoded as part
+    of the webhook URL.  Not encrypted.
+  displayName: GitHub Webhook Secret
+  from: '[a-zA-Z0-9]{40}'
+  generate: expression
+  name: GITHUB_WEBHOOK_SECRET
