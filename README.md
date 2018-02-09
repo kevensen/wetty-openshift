@@ -4,7 +4,7 @@ The wetty-openshift project contains materials that support the deployment of We
 When Wetty is run as the **root** user, Wetty executes **/bin/login** to log in to the host on which it is run.  OpenShift by default doesn't allow containers to be run as **root** for good reason.  In this case, Wetty will try to SSH to the localhost.  Now, we could tell Wetty to SSH elsewhere, but we know a trick.  When multiple containers are run in a single pod, they can reference each other as *localhost*.  Therefore, the deployment config deploys two containers in a pod:
 
 1. nodejs:6 s2i container with the Wetty application
-2. A Dockerfile built openssh container running as a non-privileged user.  This container Maven and the OpenShift CLI tool installed.
+2. A Dockerfile built openssh container running as a non-privileged user.  This container has Maven and the OpenShift CLI tool installed.
 
 ## Theory of Operation
 The *openssh* container image is built in the *openshift* project namespace making it available to all users.  Because the build process is a bit labor intensive from the standpoint of the host, it seems more practical to do it once.
