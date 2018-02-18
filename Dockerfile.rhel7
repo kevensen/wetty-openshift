@@ -20,8 +20,8 @@ RUN cd /root && \
     unzip /root/apache-maven-3.5.2-bin.zip && \
     mv apache-maven-3.5.2 /usr/bin/
 
-COPY workshop-profile.sh /etc/profile.d/
-RUN chmod a+r /etc/profile.d/workshop-profile.sh
+COPY rhel-profile.sh /etc/profile.d/
+RUN chmod a+r /etc/profile.d/rhel-profile.sh
 
 RUN mkdir /home/default && \
     useradd -u 2000 default && \

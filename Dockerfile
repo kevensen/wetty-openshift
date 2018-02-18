@@ -28,6 +28,9 @@ RUN /usr/bin/ssh-keygen -A -N '' && \
     chmod -R a+r /etc/ssh/* && \
     /usr/sbin/setcap 'cap_net_bind_service=+ep' /usr/sbin/sshd
 
+COPY fedora-profile.sh /etc/profile.d/
+RUN chmod a+r /etc/profile.d/fedora-profile.sh
+
 EXPOSE 22
 WORKDIR /home/default
 USER default
