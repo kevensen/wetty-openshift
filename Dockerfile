@@ -1,24 +1,23 @@
 FROM fedora
 LABEL maintainer="kdevensen@gmail.com"
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
-    HOME=/opt/workspace
+    HOME=/home/default \
+    GOPATH=/homde/default/go
 RUN dnf install -y --setopt=tsflags=nodocs \
-		make \
-    		nmap-ncat \
-    		npm \
     		gcc-c++ \
 		git \
-        	origin-clients \
-		openssl \
-		unzip \
+                golang \
 		java-1.8.0-openjdk-devel \
+		make \
 		maven \
-        	openssh-server && \
+    		nmap-ncat \
+    		npm \
+        	openssh-server \
+		openssl \
+        	origin-clients \
+		unzip && \
     dnf clean all && \
     rm -rf /var/cache/yum/*
-
-COPY workshop-profile.sh /etc/profile.d/
-RUN chmod a+r /etc/profile.d/workshop-profile.sh
 
 RUN mkdir /home/default && \
     useradd -u 2000 default && \
