@@ -4,17 +4,18 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     HOME=/home/default \
     GOPATH=/homde/default/go
 RUN dnf install -y --setopt=tsflags=nodocs \
-    		gcc-c++ \
+        docker \
+    	gcc-c++ \
 		git \
-                golang \
+        golang \
 		java-1.8.0-openjdk-devel \
 		make \
 		maven \
-    		nmap-ncat \
-    		npm \
-        	openssh-server \
+    	nmap-ncat \
+    	npm \
+        openssh-server \
 		openssl \
-        	origin-clients \
+        origin-clients \
 		unzip && \
     dnf clean all && \
     rm -rf /var/cache/yum/*
