@@ -4,13 +4,14 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     HOME=/home/default \
     GOPATH=/homde/default/go
 RUN dnf install -y --setopt=tsflags=nodocs \
-        docker \
+        emacs \
     	gcc-c++ \
 		git \
         golang \
 		java-1.8.0-openjdk-devel \
 		make \
 		maven \
+        nano \
     	nmap-ncat \
     	npm \
         openssh-server \
