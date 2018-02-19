@@ -17,6 +17,7 @@ RUN dnf install -y --setopt=tsflags=nodocs \
         openssh-server \
 		openssl \
         origin-clients \
+        tree \
 		unzip && \
     dnf clean all && \
     rm -rf /var/cache/yum/*
