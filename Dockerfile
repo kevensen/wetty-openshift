@@ -23,7 +23,7 @@ RUN dnf install -y --setopt=tsflags=nodocs \
 
 RUN mkdir /home/default && \
     useradd -u 2000 default && \
-    echo "default:wetty" | chpasswd && \
+    echo "default:${WETTY_PASSWORD:-wetty}" | chpasswd && \
     chown default:default /home/default
 
 RUN /usr/bin/ssh-keygen -A -N '' && \
