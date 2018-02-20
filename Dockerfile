@@ -6,19 +6,20 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
 RUN dnf install -y --setopt=tsflags=nodocs \
         emacs \
     	gcc-c++ \
-		git \
+	git \
         golang \
-		java-1.8.0-openjdk-devel \
-		make \
-		maven \
+	java-1.8.0-openjdk-devel \
+	make \
+	maven \
         nano \
     	nmap-ncat \
     	npm \
         openssh-server \
-		openssl \
+	openssl \
         origin-clients \
+	screen \
         tree \
-		unzip && \
+	unzip && \
     dnf clean all && \
     rm -rf /var/cache/yum/*
 
