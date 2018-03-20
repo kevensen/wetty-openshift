@@ -174,10 +174,9 @@ parameters:
   from: '[a-zA-Z0-9]{40}'
   generate: expression
   name: GENERIC_WEBHOOK_SECRET
-- description: The exposed hostname that will route to the Node.js service, if left
-    blank a value will be defaulted.
-  displayName: Application Hostname
-  name: APPLICATION_DOMAIN
+- description: The subdomain for the apps deployed in OpenShift.
+  displayName: Application Subdomain
+  name: APP_DOMAIN
 - description: Volume space available for data, e.g. 512Mi, 2Gi
   displayName: Volume Capacity
   name: VOLUME_CAPACITY

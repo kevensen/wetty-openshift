@@ -19,6 +19,7 @@ RUN dnf install -y --setopt=tsflags=nodocs \
         origin-clients \
 	screen \
         tree \
+        glide \
 	unzip && \
     dnf clean all && \
     rm -rf /var/cache/yum/*
