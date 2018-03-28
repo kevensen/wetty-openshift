@@ -31,7 +31,7 @@ oc create -f wetty-scc.yaml
 ```
 3. Build the *openssh* container in the *openshift* namespace
 ```terminal
-oc process -f wetty-openssh.yaml -p WETTY_PASSWORD=wetty -n openshift | oc create -f -
+oc process -f wetty-openssh.yaml -p WETTY_PASSWORD=wetty -n openshift | oc create -n openshift -f -
 ```
 4. Add the Wetty templates to the *openshift* namespace
 ```terminal
