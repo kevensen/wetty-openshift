@@ -176,7 +176,7 @@ parameters:
   name: GENERIC_WEBHOOK_SECRET
 - description: The subdomain for the apps deployed in OpenShift.
   displayName: Application Subdomain
-  name: APP_DOMAIN
+  name: APPLICATION_DOMAIN
 - description: Volume space available for data, e.g. 512Mi, 2Gi
   displayName: Volume Capacity
   name: VOLUME_CAPACITY
